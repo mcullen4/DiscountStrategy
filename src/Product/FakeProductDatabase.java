@@ -23,9 +23,22 @@ public class FakeProductDatabase implements ProductManager {
     }
 
     @Override
-    public String[] retrieveProduct() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Products retrieveProduct(String prodNo) {
+        if(prodNo == null){
+            throw new IllegalArgumentException("Invalid Product Number");
+        }
+        
+        Products currentProduct=null;
+        
+        for (Products p  : product){
+        if (p.getProductNumber().equalsIgnoreCase(prodNo)){
+            currentProduct = p;
+            break;
+        }
+        }
+    return currentProduct;
     }
+    
 
     @Override
     public void deleteProduct() {

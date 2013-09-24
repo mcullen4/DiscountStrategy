@@ -10,6 +10,6 @@ package Product;
  */
 public interface ProductManager {
     public abstract void addProduct();
-    public abstract String[] retrieveProduct();
+    public abstract Products retrieveProduct(String prodNo);
     public abstract void deleteProduct();
 }

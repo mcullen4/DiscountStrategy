@@ -4,10 +4,30 @@
  */
 package OutputManager;
 
+import Product.FakeProductDatabase;
+import Product.ProductManager;
+
 /**
  *
  * @author Michele
  */
-public class LineItem {
+public class LineItem  {
+    
+    private String productNumber;
+    private ProductManager productManager = new FakeProductDatabase();
+    
+
+    
+    public LineItem(String prodNo){
+    productNumber = prodNo;
+}
+    
+    
+    
+    
+    
+    
+    
+    
     
 }

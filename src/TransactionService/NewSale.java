@@ -11,13 +11,14 @@ import Customer.Customers;
  *
  * @author Michele
  */
-public class NewSale {
+public class NewSale implements TransactionService{
     
     private Customers activeCustomer;
     
     private String [] cartItems;
     private int [] itemQuantities;
     private CashRegister cashRegister;
+    private String receipt;
     
     
     
@@ -28,9 +29,16 @@ public class NewSale {
     cashRegister = new CashRegister(cartItems, itemQuantities);
     
     }
+    @Override
+    public void processTransaction(
+            
+            
+            
+            ){}
     
-    //private checkOut(){
-    //CashRegister cashRegister = new CashRegister();
-    //}
+    @Override
+    public String outputTransaction(){
+    return receipt;
+    }
     
 }   

@@ -4,7 +4,8 @@
  */
 package CashRegister;
 
-import Customer.Customers;
+import OutputManager.OutputManager;
+import OutputManager.Receipt;
 import ProductSelection.ProductSelectionManager;
 
 /**
@@ -19,6 +20,7 @@ public class CashRegister {
      
    private double subtotal;
    private double total;
+   private OutputManager = new Receipt();
     
     
     
@@ -29,7 +31,9 @@ public class CashRegister {
      
     }
     
+    public void addLineItemToOutput(){
     
+    }
     
     
 }

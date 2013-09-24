@@ -4,7 +4,6 @@
  */
 package Customer;
 
-import ProductSelection.Cart;
 import ProductSelection.ProductSelectionManager;
 
 /**
@@ -44,6 +43,7 @@ public class Customers {
     
     public void addItemToShoppingTrip(String productNo, int quantity){
         
+    productSelectionManager.addItem(productNo, quantity);
     
     }
 
@@ -87,7 +87,10 @@ public class Customers {
         return str;
     }
     
-    
+    public String viewCustomerCart(){
+        String str = productSelectionManager.toString();
+        return str;
+    }
     
     
 }

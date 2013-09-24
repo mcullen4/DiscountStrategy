@@ -17,6 +17,7 @@ public class Products {
     private double unitCost;
     private DiscountManager dm;
     
+    
     public Products(String prodNo, String desc, double uCost, DiscountManager
             discMan){
     this.setProductNumber(prodNo);
@@ -60,8 +61,11 @@ public class Products {
         
     }
     public double getProductDiscount(){
-        double discount;
-        discount = DiscountManager.getDiscount();
-                return discount;
+        double discount=dm.getDiscount();
+        return discount;
+    }
+    public String getProductDiscountDescription(){
+        String desc = dm.getDiscountDescription();
+        return desc;
     }
 }
