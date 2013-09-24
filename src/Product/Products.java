@@ -57,7 +57,11 @@ public class Products {
     }
 
     public void setDm(DiscountManager dm) {
-        this.dm = dm;
+        
     }
-    
+    public double getProductDiscount(){
+        double discount;
+        discount = DiscountManager.getDiscount();
+                return discount;
+    }
 }

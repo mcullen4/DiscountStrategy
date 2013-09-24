@@ -15,7 +15,7 @@ public class NoDiscount implements DiscountManager{
     
         
     @Override
-    public double getDiscount(int quantity) {
+    public double getDiscount() {
         return DISCOUNT;
     }
 

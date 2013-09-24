@@ -30,7 +30,7 @@ public class QuantityDiscount implements DiscountManager {
 
        
     @Override
-    public double getDiscount(int quantity) {
+    public double getDiscount() {
         return discount;
     }
 

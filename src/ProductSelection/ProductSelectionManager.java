@@ -12,5 +12,7 @@ public interface ProductSelectionManager {
     public abstract void addItem(String productNo, int quantity);
     public abstract void deleteItem();
     public abstract void clearAllItems();
+    public abstract String[] getProductNumbers();
+    public abstract int[] getQuantities();
     
 }

@@ -64,11 +64,13 @@ public class Cart implements ProductSelectionManager{
         
     }
 
-    public String[]getSelectedItems() {
+    @Override
+    public String[]getProductNumbers() {
         return selectedItems;
     }
     
-    public int[]getQuantity(){
+    @Override
+    public int[]getQuantities(){
         return quantity;
     }
     

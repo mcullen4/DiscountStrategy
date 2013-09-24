@@ -10,7 +10,7 @@ package DiscountManager;
  */
 public interface DiscountManager {
     
-    public abstract double getDiscount(int quantity);
+    public abstract double getDiscount();
     public abstract String getDiscountDescription();
     
 }

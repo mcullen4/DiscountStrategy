@@ -27,7 +27,7 @@ public class GrandOpeningDiscount implements DiscountManager {
     
     
     @Override
-    public double getDiscount(int quantity) {
+    public double getDiscount() {
         return discount;
     }
 

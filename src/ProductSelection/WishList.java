@@ -29,5 +29,15 @@ public class WishList implements ProductSelectionManager {
     public void clearAllItems() {
         
     }
+
+    @Override
+    public String[] getProductNumbers() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public int[] getQuantities() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
 }

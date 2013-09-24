@@ -17,19 +17,35 @@ public class Customers {
     private String fName;
     private String lName;
     private ProductSelectionManager productSelectionManager;
+    
+    
 
     public Customers(String customerNo, String fName, String lName, 
         ProductSelectionManager productSelectionManager) {
-        setCustomerNo(customerNo);
-        setfName(fName);
-        setlName(lName);
-        setProductSelectionManager(productSelectionManager);
+        this.setCustomerNo(customerNo);
+        this.setfName(fName);
+        this.setlName(lName);
+        this.setProductSelectionManager(productSelectionManager);
         
              
     }
+
+    public Customers() {
+        
+    }
     
- 
+    public String[] getCartItems(){
+    return productSelectionManager.getProductNumbers();
+    }
     
+    public int[] getQuantities(){
+    return productSelectionManager.getQuantities();
+    }
+    
+    public void addItemToShoppingTrip(String productNo, int quantity){
+        
+    
+    }
 
     public String getCustomerNo() {
         return customerNo;
@@ -62,6 +78,13 @@ public class Customers {
 
     public ProductSelectionManager getProductSelectionManager() {
         return productSelectionManager;
+    }
+    
+    @Override
+    public String toString(){
+    String str = "Customer Number:  "+customerNo+
+            "\nCustomer Name:  "+fName+" "+lName; 
+        return str;
     }
     
     
