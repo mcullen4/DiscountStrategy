@@ -18,13 +18,14 @@ public class Customers {
     private String lName;
     private ProductSelectionManager productSelectionManager;
 
-    public Customers(String customerNo, String fName, String lName) {
+    public Customers(String customerNo, String fName, String lName, 
+        ProductSelectionManager productSelectionManager) {
         setCustomerNo(customerNo);
         setfName(fName);
         setlName(lName);
+        setProductSelectionManager(productSelectionManager);
         
-        //Default the productSelectionManager to a cart
-        productSelectionManager = new Cart();
+             
     }
     
  

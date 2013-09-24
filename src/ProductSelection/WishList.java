@@ -9,6 +9,11 @@ package ProductSelection;
  * @author Michele
  */
 public class WishList implements ProductSelectionManager {
+    
+    
+    //Just have this out there to show that there could be multiple 
+    //product selection devices
+    
 
     @Override
     public void addItem(String productID, int quantity) {

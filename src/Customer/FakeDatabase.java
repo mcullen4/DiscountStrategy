@@ -4,17 +4,20 @@
  */
 package Customer;
 
+import ProductSelection.Cart;
+import ProductSelection.ProductSelectionManager;
+
 /**
  *
  * @author Michele
  */
 public class FakeDatabase implements CustomerManager {
     
+    private ProductSelectionManager cart = new Cart();
     
-    
-    private Customers [] customer = {new Customers("C100","Joe","Smith"),
-    new Customers("C101","Michele","Cullen"),new Customers("C102",
-            "John","Doe")};
+    private Customers [] customer = {new Customers("C100","Joe","Smith", cart),
+    new Customers("C101","Michele","Cullen", cart),new Customers("C102",
+            "John","Doe", cart)};
            
        
     @Override

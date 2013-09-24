@@ -10,6 +10,7 @@ import Customer.FakeDatabase;
 import Product.FakeProductDatabase;
 import Product.ProductManager;
 import ProductSelection.Cart;
+import ProductSelection.ProductSelectionManager;
 
 /**
  *
@@ -23,15 +24,6 @@ public class StartUp {
     public static void main(String[] args) {
         //String custNo = "C100";
         //Customers customer;
-        CustomerManager customerManager = new FakeDatabase();
-        ProductManager productManager = new FakeProductDatabase();
-        Customers c1 = new Customers("Joe","Smith","1234");
-        c1.setProductSelectionManager(new Cart());
         
-        Cart cart = new Cart();
-        cart.addItem("GBFY10", 2);
-        System.out.println(cart.getSelectedItems());
-        //customer=customerManager.retrieveCustomer(custNo);
-        //System.out.println(customer.getfName());
     }
 }

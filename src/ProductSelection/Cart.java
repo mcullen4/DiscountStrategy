@@ -11,39 +11,38 @@ package ProductSelection;
 public class Cart implements ProductSelectionManager{
     
     
-   private int columns=1;
-   private int rows=0;
+   
 
-    private String[][] selectedItems = new String[rows][columns];
+    private String[] selectedItems = new String[0];
+    private int [] quantity = new int[0];
     
     @Override
-    public void addItem(String productNo,int quantity) {
+    public void addItem(String productNo,int quant) {
         
-        //if(selectedItems.length>0){
+        //validation that String is not null and that quant is not 0
         
-        String[] product = new String[];
-        String quant = Integer.toString(quantity);
+        //wanted to have this stored in one multi dimension array but could
+        //not get the arraycopy to work - researched quite a bit on the net
+        //but did not find a workable solution
         
-        String[][] temp = new String[selectedItems.length+1][columns];
-        for (int i = 0; i<selectedItems.length;i++)
-        {
-                for (int a = 0; a<selectedItems[i].length;a++){
-                temp[i][a]=selectedItems[i][a];
-            }
-        //System.arraycopy(selectedItems[i],0,temp[i],0,selectedItems[i].length);
-        //temp [i][0] = selectedItems [i][0];
-        //temp [i][1] = selectedItems [i][1];
-        
+        if (selectedItems.length > 0){
+             String [] tempItems = new String[selectedItems.length+1];
+             int [] tempQuantities = new int[quantity.length+1];
+             System.arraycopy(selectedItems, 0, tempItems, 0, selectedItems.length);
+             System.arraycopy(quantity, 0, tempQuantities, 0, quantity.length);
+             selectedItems=tempItems;
+             quantity=tempQuantities;
+             selectedItems[selectedItems.length-1]=productNo;
+             quantity[quantity.length-1]=quant;
+             
         }
-        selectedItems=temp;
+        else{
+            selectedItems[0]=productNo;
+            quantity[0]=quant;
+        }
         
-       selectedItems[selectedItems.length-1][0] = product;
-       selectedItems[selectedItems.length-1][1] = quant;
         
-    //}   else{
-        //selectedItems[0][0] = productNo;
-        //selectedItems[0][1] = Integer.toString(quantity);
-        //}
+
     }
         
 
@@ -61,10 +60,16 @@ public class Cart implements ProductSelectionManager{
     @Override
     public void clearAllItems() {
         
+        //not important right now - code if there is time
+        
     }
 
-    public String[][] getSelectedItems() {
+    public String[]getSelectedItems() {
         return selectedItems;
+    }
+    
+    public int[]getQuantity(){
+        return quantity;
     }
     
 }
