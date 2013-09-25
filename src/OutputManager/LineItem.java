@@ -4,8 +4,7 @@
  */
 package OutputManager;
 
-import Product.FakeProductDatabase;
-import Product.ProductManager;
+import DataSource.Product;
 
 /**
  *
@@ -13,14 +12,68 @@ import Product.ProductManager;
  */
 public class LineItem  {
     
-    private String productNumber;
-    private ProductManager productManager = new FakeProductDatabase();
     
+    
+    private int quantity;
+    private double productSubtotal;
+    private double discountAmount;
+    private double productTotal;
+    private Product product;
+    
+    
+    public LineItem(Product product, int quantity){
+    this.quantity=quantity;
+    this.product=product;
+        
+    }
+    public double getProductSubtotal(){
+        productSubtotal=product.getUnitCost()*quantity;
+    return productSubtotal;
+    }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
+    public double getDiscountAmount() {
+        discountAmount=(productSubtotal*product.getProductDiscount())*-1;
+        return discountAmount;
+    }
+
+    public void setDiscountAmount(double discountAmount) {
+        this.discountAmount = discountAmount;
+    }
+
+    public double getProductTotal() {
+        productTotal=productSubtotal+discountAmount;
+        return productTotal;
+    }
+
+    public void setProductTotal(double productTotal) {
+        this.productTotal = productTotal;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
     
-    public LineItem(String prodNo){
-    productNumber = prodNo;
-}
+    @Override
+    public String toString(){
+    String str = product.getProductNumber() + "     "+product.getDescription()+
+            "     "+quantity+"     "+"$"+product.getUnitCost()+"     "+
+            productSubtotal+"     "+discountAmount+"     "+productTotal;
+    
+    return str;
+    }
+
     
     
     

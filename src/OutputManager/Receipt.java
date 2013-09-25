@@ -4,13 +4,28 @@
  */
 package OutputManager;
 
+import DataSource.Customer;
+
 /**
  *
  * @author Michele
  */
 public class Receipt implements OutputManager {
+    
+    private Customer customer;
+    private LineItem [] lineItems;
+    
+    public Receipt(Customer customer,LineItem[]lineItems ){
+    this.customer=customer;
+    this.lineItems = lineItems;
+    
+    }
 
-   
+    @Override
+   public void printReceipt(){
+        String customerInfo = customer.toString();
+   System.out.println(customerInfo);
+   }
 
     @Override
     public double outputSubTotal() {

@@ -27,6 +27,7 @@ public class DatabaseRetrieval implements DataRetrievalManager {
     
     
     
+    @Override
     public Customer retrieveCustomer(String customerNo){
     Customer customer[] = ds.getCustomer();
         
@@ -46,6 +47,7 @@ public class DatabaseRetrieval implements DataRetrievalManager {
         
     }
     
+    @Override
     public Product retrieveProduct(String productNo){
         Product product[] = ds.getProduct();
         
@@ -62,6 +64,25 @@ public class DatabaseRetrieval implements DataRetrievalManager {
         }   
         }
         return currentProduct;
+    }
+    
+//    public String [] retrieveCartItems(Customer customer){
+//        String [] cartItems = customer.getCartItems();
+//        return cartItems;
+//    }
+//    
+//    public int [] retrieveCartQuantities(Customer customer){
+//        int [] quantities = customer.getQuantities();
+//        return quantities;
+//    
+//    }
+
+    public DataSource getDs() {
+        return ds;
+    }
+
+    public void setDs(DataSource ds) {
+        this.ds = ds;
     }
     
     

@@ -15,5 +15,6 @@ public interface OutputManager {
     public abstract double outputSubTotal();
     public abstract double outputTaxAmount();
     public abstract double outputGrandTotal();
+    public abstract void printReceipt();
     
 }

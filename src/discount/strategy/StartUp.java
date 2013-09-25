@@ -4,12 +4,11 @@
  */
 package discount.strategy;
 
-import Customer.CustomerManager;
-import DataSource.Customer;
-import Customer.FakeDatabase;
-import TransactionService.NewSale;
+
+import DataSource.DataSource;
+import DataSource.FakeDatabase;
+import TransactionService.NewWebSale;
 import TransactionService.TransactionService;
-import java.util.Scanner;
 
 /**
  *
@@ -25,9 +24,9 @@ public class StartUp {
        /*Start a transaction - pass on hard coded customer number to the
         transaction*/
         
-        
-       TransactionService transaction = new NewSale("C100");
-       
+       DataSource dataSource = new FakeDatabase();
+       TransactionService transaction = new NewWebSale(dataSource, "C101");
+       transaction.startTransaction();
        
        //System.out.println(customer.toString());
        //System.out.println(customer.viewCustomerCart());
