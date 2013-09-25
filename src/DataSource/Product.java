@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Product;
+package DataSource;
 
 import DiscountManager.DiscountManager;
 
@@ -10,7 +10,7 @@ import DiscountManager.DiscountManager;
  *
  * @author Michele
  */
-public class Products {
+public class Product {
     
     private String productNumber;
     private String description;
@@ -18,7 +18,7 @@ public class Products {
     private DiscountManager dm;
     
     
-    public Products(String prodNo, String desc, double uCost, DiscountManager
+    public Product(String prodNo, String desc, double uCost, DiscountManager
             discMan){
     this.setProductNumber(prodNo);
     this.setDescription(desc);

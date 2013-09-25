@@ -5,40 +5,56 @@
 package TransactionService;
 
 import CashRegister.CashRegister;
-import Customer.Customers;
+import DataSource.Customer;
 
 /**
  *
  * @author Michele
  */
 public class NewSale implements TransactionService{
+   
+    private String customerNo;
     
-    private Customers activeCustomer;
-    
-    private String [] cartItems;
-    private int [] itemQuantities;
-    private CashRegister cashRegister;
-    private String receipt;
-    
-    
-    
-    public NewSale(Customers customer){
-    activeCustomer=customer;    
-    cartItems  = activeCustomer.getCartItems();
-    itemQuantities = activeCustomer.getQuantities();
-    cashRegister = new CashRegister(cartItems, itemQuantities);
-    
-    }
-    @Override
-    public void processTransaction(
-            
-            
-            
-            ){}
-    
-    @Override
-    public String outputTransaction(){
-    return receipt;
+    public NewSale(String customerNo){
+    this.customerNo = customerNo;
     }
     
-}   
+    @Override
+    public void startTransaction(){
+        
+        retrieveCustomer();
+        addItemsToCart();
+        goToCheckOut();
+    }  
+
+    private void retrieveCustomer() {
+       
+    }
+
+    private void addItemsToCart() {
+        
+    }
+
+    private void goToCheckOut() {
+        
+    }
+   
+}
+    
+//    private Customer activeCustomer;
+//    
+//    private String [] cartItems;
+//    private int [] itemQuantities;
+//    private CashRegister cashRegister;
+//    private String receipt;
+//    
+//    
+//    
+//    public NewSale(String customerNo){
+//    activeCustomer=customer;    
+//    cartItems  = activeCustomer.getCartItems();
+//    itemQuantities = activeCustomer.getQuantities();
+//    cashRegister = new CashRegister(cartItems, itemQuantities);
+//    
+//    }
+//    

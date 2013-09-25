@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package Customer;
+package DataSource;
 
 import ProductSelection.ProductSelectionManager;
 
@@ -10,7 +10,7 @@ import ProductSelection.ProductSelectionManager;
  *
  * @author Michele
  */
-public class Customers {
+public class Customer {
     
     private String customerNo;
     private String fName;
@@ -19,7 +19,7 @@ public class Customers {
     
     
 
-    public Customers(String customerNo, String fName, String lName, 
+    public Customer(String customerNo, String fName, String lName, 
         ProductSelectionManager productSelectionManager) {
         this.setCustomerNo(customerNo);
         this.setfName(fName);
@@ -29,7 +29,7 @@ public class Customers {
              
     }
 
-    public Customers() {
+    public Customer() {
         
     }
     

@@ -4,6 +4,7 @@
  */
 package Customer;
 
+import DataSource.Customer;
 import ProductSelection.Cart;
 import ProductSelection.ProductSelectionManager;
 
@@ -15,8 +16,8 @@ public class FakeDatabase implements CustomerManager {
     
     private ProductSelectionManager cart = new Cart();
     
-    private Customers [] customer = {new Customers("C100","Joe","Smith", cart),
-    new Customers("C101","Michele","Cullen", cart),new Customers("C102",
+    private Customer [] customer = {new Customer("C100","Joe","Smith", cart),
+    new Customer("C101","Michele","Cullen", cart),new Customer("C102",
             "John","Doe", cart)};
            
        
@@ -25,14 +26,14 @@ public class FakeDatabase implements CustomerManager {
     }
 
     @Override
-    public Customers retrieveCustomer(String custNo) {
+    public Customer retrieveCustomer(String custNo) {
         if(custNo == null){
             throw new IllegalArgumentException("Invalid Customer Number");
         }
         
-        Customers activeCustomer = null;
+        Customer activeCustomer = null;
         
-        for (Customers c : customer){
+        for (Customer c : customer){
         if (c.getCustomerNo().equalsIgnoreCase(custNo)){
             activeCustomer = c;
             break;

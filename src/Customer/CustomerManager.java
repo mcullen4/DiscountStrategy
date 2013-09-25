@@ -4,6 +4,8 @@
  */
 package Customer;
 
+import DataSource.Customer;
+
 /**
  *
  * @author Michele
@@ -11,7 +13,7 @@ package Customer;
 public interface CustomerManager {
     
     public abstract void addCustomer();
-    public abstract Customers retrieveCustomer(String custNo);
+    public abstract Customer retrieveCustomer(String custNo);
     public abstract void deleteCustomer();
     
 }

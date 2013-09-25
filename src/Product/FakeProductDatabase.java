@@ -4,6 +4,8 @@
  */
 package Product;
 
+import DataSource.Product;
+
 
 
 /**
@@ -12,10 +14,10 @@ package Product;
  */
 public class FakeProductDatabase implements ProductManager {
     
-    private Products [] product = {new Products("GBFY10","Packer Hat",19.95,
+    private Product [] product = {new Product("GBFY10","Packer Hat",19.95,
             new DiscountManager.NoDiscount()),
-    new Products("GBFY20","Packer Jersey",49.95,new DiscountManager.GrandOpeningDiscount()),
-    new Products("GBFY30","Packer Bumper Stickers",3.95,new DiscountManager.QuantityDiscount())};
+    new Product("GBFY20","Packer Jersey",49.95,new DiscountManager.GrandOpeningDiscount()),
+    new Product("GBFY30","Packer Bumper Stickers",3.95,new DiscountManager.QuantityDiscount())};
 
     @Override
     public void addProduct() {
@@ -23,14 +25,14 @@ public class FakeProductDatabase implements ProductManager {
     }
 
     @Override
-    public Products retrieveProduct(String prodNo) {
+    public Product retrieveProduct(String prodNo) {
         if(prodNo == null){
             throw new IllegalArgumentException("Invalid Product Number");
         }
         
-        Products currentProduct=null;
+        Product currentProduct=null;
         
-        for (Products p  : product){
+        for (Product p  : product){
         if (p.getProductNumber().equalsIgnoreCase(prodNo)){
             currentProduct = p;
             break;
