@@ -5,6 +5,8 @@
 package OutputManager;
 
 import DataSource.Customer;
+import java.text.DecimalFormat;
+import java.util.Calendar;
 
 /**
  *
@@ -14,6 +16,10 @@ public class Receipt implements OutputManager {
     
     private Customer customer;
     private LineItem [] lineItems;
+    private double grandTotal=0;
+    private double totalDiscount=0;
+    private DecimalFormat df = new DecimalFormat("#.00");
+    
     
     public Receipt(Customer customer,LineItem[]lineItems ){
     this.customer=customer;
@@ -23,9 +29,40 @@ public class Receipt implements OutputManager {
 
     @Override
    public void printReceipt(){
-        String customerInfo = customer.toString();
-   System.out.println(customerInfo);
+        
+   calculateTotals();
+   
+  // String customerInfo = customer.toString();
+   System.out.println(customer.toString());
+   System.out.println("======================================================"
+           + "===================================================");
+   
+   //print the line items
+   for(int a=0;a<lineItems.length;a++){
+   System.out.println(lineItems[a].toString());
    }
+   System.out.println("======================================================"
+           + "===================================================");
+   
+   System.out.println("\t\t\t\t\t\t\t\t\t\t"+"Grand Total     "+grandTotal);
+   System.out.println("\t\t\t\t\t\t\t\t\t\t"+"You Saved       "+totalDiscount);
+   
+   }
+
+private void calculateTotals(){
+for(int a = 0; a<lineItems.length;a++){
+
+grandTotal+=lineItems[a].getProductTotal();
+totalDiscount+=lineItems[a].getDiscountAmount();
+
+//format the fields to round to 2 places
+grandTotal=Double.parseDouble(df.format(grandTotal));
+totalDiscount=Double.parseDouble(df.format(totalDiscount));
+}
+}
+
+
+
 
     @Override
     public double outputSubTotal() {

@@ -11,14 +11,12 @@ package DiscountManager;
 public class QuantityDiscount implements DiscountManager {
     
     
-    private double discount;
-    private final String DISCOUNT_DESCRIPTION="Quantity Discount";
+    private double discount=.10;
+    private static final String DISCOUNT_DESCRIPTION="Quantity Discount";
     
     public QuantityDiscount()
     {
-    discount = .15;
-    
-    
+        
     }
 
     public void setDiscount(double discount) {

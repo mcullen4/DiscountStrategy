@@ -11,11 +11,11 @@ package DiscountManager;
 public class GrandOpeningDiscount implements DiscountManager {
 
     private double discount;
-    private final String DISCOUNT_DESCRIPTION="Grand Opening Discount";
+    private static final String DISCOUNT_DESCRIPTION="Grand Opening Discount";
     
     public GrandOpeningDiscount()
     {
-        discount = .10;
+      this.discount=.10; 
     }
 
     public void setDiscount(double discount) {

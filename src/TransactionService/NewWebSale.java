@@ -76,44 +76,22 @@ public class NewWebSale implements TransactionService{
         and pass the product and quantity through to create a line item.*/
         for (int a = 0;a<cartItems.length;a++)
         {
+        
         Product product = dataRetrieve.retrieveProduct(cartItems[a]);
         int quantity = quantities[a];
-        
-        LineItem lineItem = new LineItem(product,quantity);
-        
-        
-        
-        //copy the array so that each line item can be added
-        if(lineItems!=null){
+                       
         LineItem [] temp = new LineItem[lineItems.length+1];
-        System.arraycopy(lineItems, 0, temp, 0, 0);
+        System.arraycopy(lineItems, 0, temp, 0, lineItems.length);
+        temp[temp.length-1] = new LineItem(product, quantity);
         lineItems = temp;
-        lineItems[lineItems.length-1]=lineItem;
-        }else
-        {
-            lineItems[0] = lineItem;
+        //lineItems[lineItems.length-1]= lineItem;
+        //lineItems [lineItems.length-1] = new LineItem(product,quantity);
+        System.out.println(lineItems[lineItems.length-1].toString());
         }
         
         
         }
     }
    
-}
+
     
-//    private Customer activeCustomer;
-//    
-//    private String [] cartItems;
-//    private int [] itemQuantities;
-//    private CashRegister cashRegister;
-//    private String receipt;
-//    
-//    
-//    
-//    public NewWebSale(String customerNo){
-//    activeCustomer=customer;    
-//    cartItems  = activeCustomer.getCartItems();
-//    itemQuantities = activeCustomer.getQuantities();
-//    cashRegister = new CashRegister(cartItems, itemQuantities);
-//    
-//    }
-//    

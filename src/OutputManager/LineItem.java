@@ -5,6 +5,7 @@
 package OutputManager;
 
 import DataSource.Product;
+import java.text.DecimalFormat;
 
 /**
  *
@@ -19,15 +20,19 @@ public class LineItem  {
     private double discountAmount;
     private double productTotal;
     private Product product;
+    private DecimalFormat df = new DecimalFormat("#.00");
     
     
     public LineItem(Product product, int quantity){
     this.quantity=quantity;
     this.product=product;
+    this.productSubtotal=Double.parseDouble(df.format(product.getUnitCost()*quantity));
+    this.discountAmount=Double.parseDouble(df.format((productSubtotal*product.getProductDiscount())*-1));
+    this.productTotal=Double.parseDouble(df.format(productSubtotal+discountAmount));
         
     }
     public double getProductSubtotal(){
-        productSubtotal=product.getUnitCost()*quantity;
+        productSubtotal=Double.parseDouble(df.format(product.getUnitCost()*quantity));
     return productSubtotal;
     }
 
@@ -40,7 +45,7 @@ public class LineItem  {
     }
 
     public double getDiscountAmount() {
-        discountAmount=(productSubtotal*product.getProductDiscount())*-1;
+        Double.parseDouble(df.format((productSubtotal*product.getProductDiscount())*-1));
         return discountAmount;
     }
 
@@ -49,7 +54,7 @@ public class LineItem  {
     }
 
     public double getProductTotal() {
-        productTotal=productSubtotal+discountAmount;
+        productTotal=Double.parseDouble(df.format(productSubtotal+discountAmount));
         return productTotal;
     }
 
@@ -67,9 +72,9 @@ public class LineItem  {
     
     @Override
     public String toString(){
-    String str = product.getProductNumber() + "     "+product.getDescription()+
-            "     "+quantity+"     "+"$"+product.getUnitCost()+"     "+
-            productSubtotal+"     "+discountAmount+"     "+productTotal;
+    String str = product.getProductNumber() + "\t" +product.getDescription()+
+            "\t\t"+quantity+"\t\t"+"$"+product.getUnitCost()+"\t\t"+"$"+
+            productSubtotal+"\t\t"+discountAmount+"\t\t"+"$"+productTotal;
     
     return str;
     }

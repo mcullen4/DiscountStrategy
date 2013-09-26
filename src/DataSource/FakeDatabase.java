@@ -23,7 +23,7 @@ public class FakeDatabase implements DataSource {
     private Product[] product = {new Product("GBFY10", "Packer Hat", 19.95,
         new DiscountManager.NoDiscount()), new Product("GBFY20", "Packer "
         + "Jersey", 49.95, new DiscountManager.GrandOpeningDiscount()),
-        new Product("GBFY30", "Packer Bumper Stickers", 3.95, new 
+        new Product("GBFY30", "Bumper Stickers", 3.95, new 
         DiscountManager.QuantityDiscount())};
     
     

@@ -60,9 +60,12 @@ public class DatabaseRetrieval implements DataRetrievalManager {
         for (Product p: product){
         if (p.getProductNumber().equalsIgnoreCase(productNo)){
             currentProduct = p;
+            //System.out.println(currentProduct.getProductDiscountDescription());
             break;
+            
         }   
         }
+        
         return currentProduct;
     }
     

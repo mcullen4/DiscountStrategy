@@ -10,8 +10,12 @@ package DiscountManager;
  */
 public class NoDiscount implements DiscountManager{
     
-    private final double DISCOUNT=0.00;
-    private final String DISCOUNT_DESCRIPTION="No discount applies";
+    private static final double DISCOUNT=0.00;
+    private static final String DISCOUNT_DESCRIPTION="No discount applies";
+    
+    public NoDiscount(){
+        
+}
     
         
     @Override
