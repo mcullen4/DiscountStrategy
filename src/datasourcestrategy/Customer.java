@@ -2,9 +2,10 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package DataSource;
+package datasourcestrategy;
 
-import ProductSelection.ProductSelectionManager;
+import productselection.CartItem;
+import productselection.ProductSelectionStrategy;
 
 /**
  *
@@ -15,16 +16,16 @@ public class Customer {
     private String customerNo;
     private String fName;
     private String lName;
-    private ProductSelectionManager productSelectionManager;
+    private ProductSelectionStrategy productSelection;
     
     
 
     public Customer(String customerNo, String fName, String lName, 
-        ProductSelectionManager productSelectionManager) {
+        ProductSelectionStrategy productSelection) {
         this.setCustomerNo(customerNo);
         this.setfName(fName);
         this.setlName(lName);
-        this.setProductSelectionManager(productSelectionManager);
+        this.setProductSelection(productSelection);
         
              
     }
@@ -33,17 +34,15 @@ public class Customer {
         
     }
     
-    public String[] getCartItems(){
-    return productSelectionManager.getProductNumbers();
+    public CartItem[] getCartItems(){
+    return productSelection.getCartItems();
     }
     
-    public int[] getQuantities(){
-    return productSelectionManager.getQuantities();
-    }
+    
     
     public void addItemToShoppingTrip(String productNo, int quantity){
-        
-    productSelectionManager.addItem(productNo, quantity);
+    CartItem cartItem = new CartItem(productNo, quantity);  
+    productSelection.addItem(cartItem);
     
     }
 
@@ -71,13 +70,13 @@ public class Customer {
         this.lName = lName;
     }
     
-    public void setProductSelectionManager(ProductSelectionManager pSM){
-        this.productSelectionManager = pSM;
+    public void setProductSelection(ProductSelectionStrategy pSM){
+        this.productSelection = pSM;
         
     }
 
-    public ProductSelectionManager getProductSelectionManager() {
-        return productSelectionManager;
+    public ProductSelectionStrategy getProductSelectionManager() {
+        return productSelection;
     }
     
     @Override
@@ -88,7 +87,7 @@ public class Customer {
     }
     
     public String viewCustomerCart(){
-        String str = productSelectionManager.toString();
+        String str = productSelection.toString();
         return str;
     }
     

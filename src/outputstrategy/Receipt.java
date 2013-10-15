@@ -2,11 +2,18 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package OutputManager;
+package outputstrategy;
 
-import DataSource.Customer;
+import dataretrieval.DataRetrievalManagerAbstraction;
+import dataretrieval.DatabaseRetrievalManager;
+import datasourcestrategy.Customer;
+import datasourcestrategy.DataSource;
+import datasourcestrategy.Product;
 import java.text.DecimalFormat;
 import java.util.Calendar;
+import michele.cullen.date.util.CalendarUtilities;
+import michele.cullen.date.util.JodaUtilities;
+import productselection.CartItem;
 
 /**
  *
@@ -15,24 +22,54 @@ import java.util.Calendar;
 public class Receipt implements OutputManager {
     
     private Customer customer;
-    private LineItem [] lineItems;
+    private LineItem [] lineItems=new LineItem[0];
     private double grandTotal=0;
     private double totalDiscount=0;
     private DecimalFormat df = new DecimalFormat("#.00");
+    private DataRetrievalManagerAbstraction dataRetrieve;
+    private DataSource datasource;
     
     
-    public Receipt(Customer customer,LineItem[]lineItems ){
+    public Receipt(DataSource ds,Customer customer){
+    this.datasource = ds;
     this.customer=customer;
-    this.lineItems = lineItems;
+    
+    this.dataRetrieve = new DatabaseRetrievalManager(ds);
     
     }
-
+    
+    
+    @Override
+    public void createLineItemArray(CartItem[] cartItems) {
+    
+        
+        /*for each item in the cartItem array, it will get the product
+        and pass the product and quantity through to create a line item.*/
+        for (int a = 0;a<cartItems.length;a++)
+        {
+        
+        Product product = dataRetrieve.retrieveProduct(cartItems[a].getProductNumber());
+        int quantity = cartItems[a].getQuantity();
+                       
+        LineItem [] temp = new LineItem[lineItems.length+1];
+        System.arraycopy(lineItems, 0, temp, 0, lineItems.length);
+        temp[temp.length-1] = new LineItem(product,quantity);
+        lineItems = temp;
+        //lineItems[lineItems.length-1]= lineItem;
+        //lineItems [lineItems.length-1] = new LineItem(product,quantity);
+        //System.out.println(lineItems[lineItems.length-1].toString());
+        }
+        
+        
+        }
     @Override
    public void printReceipt(){
         
    calculateTotals();
    
   // String customerInfo = customer.toString();
+   Calendar date = Calendar.getInstance();
+   System.out.println(CalendarUtilities.convertDateToStringAndReturn(date));
    System.out.println(customer.toString());
    System.out.println("======================================================"
            + "===================================================");
@@ -60,6 +97,10 @@ grandTotal=Double.parseDouble(df.format(grandTotal));
 totalDiscount=Double.parseDouble(df.format(totalDiscount));
 }
 }
+
+public LineItem[] createLineItemArray(){
+
+return lineItems;}
 
 
 

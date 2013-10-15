@@ -2,10 +2,12 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package OutputManager;
+package outputstrategy;
 
-import DataSource.Product;
+import datasourcestrategy.Product;
+import discountstrategy.DiscountStrategy;
 import java.text.DecimalFormat;
+
 
 /**
  *
@@ -24,12 +26,13 @@ public class LineItem  {
     
     
     public LineItem(Product product, int quantity){
+        
     this.quantity=quantity;
     this.product=product;
     this.productSubtotal=Double.parseDouble(df.format(product.getUnitCost()*quantity));
-    this.discountAmount=Double.parseDouble(df.format((productSubtotal*product.getProductDiscount())*-1));
+    this.discountAmount=getDiscountAmount();
     this.productTotal=Double.parseDouble(df.format(productSubtotal+discountAmount));
-        
+    
     }
     public double getProductSubtotal(){
         productSubtotal=Double.parseDouble(df.format(product.getUnitCost()*quantity));
@@ -45,11 +48,19 @@ public class LineItem  {
     }
 
     public double getDiscountAmount() {
-        Double.parseDouble(df.format((productSubtotal*product.getProductDiscount())*-1));
+        double unitCost=product.getUnitCost();
+        DiscountStrategy ds = product.getDm();
+        double discount = ds.getDiscountAmount(unitCost, quantity);
+        discountAmount = Double.parseDouble(df.format(discount*-1));
+        
         return discountAmount;
+        
+        //Double.parseDouble(df.format((productSubtotal*product.getProductDiscount())*-1));
+        //return discountAmount;
     }
 
     public void setDiscountAmount(double discountAmount) {
+        
         this.discountAmount = discountAmount;
     }
 

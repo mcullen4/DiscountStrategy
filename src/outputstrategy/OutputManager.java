@@ -2,7 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package OutputManager;
+package outputstrategy;
+
+import productselection.CartItem;
 
 /**
  *
@@ -16,5 +18,5 @@ public interface OutputManager {
     public abstract double outputTaxAmount();
     public abstract double outputGrandTotal();
     public abstract void printReceipt();
-    
+    public abstract void createLineItemArray(CartItem [] cartItems);
 }

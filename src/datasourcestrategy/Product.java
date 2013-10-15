@@ -2,9 +2,9 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package DataSource;
+package datasourcestrategy;
 
-import DiscountManager.DiscountManager;
+import discountstrategy.DiscountStrategy;
 
 /**
  *
@@ -15,10 +15,10 @@ public class Product {
     private String productNumber;
     private String description;
     private double unitCost;
-    private DiscountManager dm;
+    private DiscountStrategy dm;
     
     
-    public Product(String prodNo, String desc, double uCost, DiscountManager
+    public Product(String prodNo, String desc, double uCost, DiscountStrategy
             discMan){
     this.setProductNumber(prodNo);
     this.setDescription(desc);
@@ -53,11 +53,11 @@ public class Product {
         this.unitCost = unitCost;
     }
 
-    public DiscountManager getDm() {
+    public DiscountStrategy getDm() {
         return dm;
     }
 
-    public void setDm(DiscountManager dm) {
+    public void setDm(DiscountStrategy dm) {
         this.dm=dm;
     }
     public double getProductDiscount(){

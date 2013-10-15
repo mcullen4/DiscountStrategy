@@ -2,13 +2,13 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package DiscountManager;
+package discountstrategy;
 
 /**
  *
  * @author Michele
  */
-public class QuantityDiscount implements DiscountManager {
+public class QuantityDiscount implements DiscountStrategy {
     
     
     private double discount=.10;
@@ -35,6 +35,21 @@ public class QuantityDiscount implements DiscountManager {
     @Override
     public String getDiscountDescription() {
     return DISCOUNT_DESCRIPTION;
+    }
+
+    @Override
+    public double getDiscountAmount(double unitCost, int quantity) {
+        double discountAmount;
+        if(quantity>5){
+            discountAmount=(unitCost*quantity)*discount;
+        }
+        else{
+        discountAmount=0;
+        }
+        
+        
+        
+        return discountAmount;
     }
     
 }
